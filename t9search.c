@@ -9,7 +9,8 @@ char t9_char(char c) {
 
   if(c >= 'a' && c <= "z") {
     // retezec cisel odpovidajic pismenum
-    // znak odecte hodnotu 'a'(97) a dostaneme pozici znaku v retezec
+    // znak odecte hodnotu 'a'(97)
+    // dostaneme pozici znaku v retezec
     return "22233344455566677778889999"[c - 'a'];
   }
 
@@ -18,6 +19,23 @@ char t9_char(char c) {
   }
 
   return c;
+}
+
+int shoda(char text[], char hledam[]) {
+  for(int = 0; text[i] != '\0'; i++) {
+    int j = 0;
+
+    // od aktualni pozice [i] zkousim jestli se shoduji
+    // dalsi znaky [j]
+    while(text[i + j] == hledam[j] && hledam[j] != '\0') {
+      j++;
+    }
+
+    if(hledam[j] == '\0') {
+      return 1;
+    }
+  }
+  return 0;
 }
 
 
@@ -37,6 +55,26 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
+  else if(argc == 2) {
+		char jmeno[MAX_LEN];
+    char cislo[MAX_LEN];
+    int nalezeno = 0;
 
+		while(fgets(jmeno, sizeof(jmeno), stdin) != NULL) {
+			if(fgets(cislo, sizeof(cislo), stdin) != NULL) {
+				jmeno[strcspn(jmeno, "\n")] = '\0';
+				cislo[strcspn(cislo, "\n")] = '\0';
+
+        char t9_char[MAX_LEN];
+        int i;
+        for(i = 0; jmeno[i] != '\0'; i++) {
+          t9_jmeno[i] = t9_char(jmeno[i]);
+        }
+        t9_jmeno[i] = '\0';
+
+
+      }  
+    }
+  }
 	return 0;
 }
