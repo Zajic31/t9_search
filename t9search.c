@@ -74,7 +74,13 @@ int main(int argc, char *argv[]) {
         }
         t9_jmeno[i] = '\0';
 
-        if(shoda(t9_jmeno, argv[1]) || shoda(cislo, argv[1])) {
+        char t9_cislo[MAX_LEN];
+        for (i = 0; cislo[i] != '\0'; i++) {
+          t9_cislo[i] = t9_char(cislo[i]);
+        }
+        t9_cislo[i] = '\0';
+
+        if(shoda(t9_jmeno, argv[1]) || shoda(t9_cislo, argv[1])) {
           printf("%s, %s\n", jmeno, cislo);
           nalezeno = 1;
         }
