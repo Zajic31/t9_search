@@ -8,9 +8,16 @@ char t9_char(char c) {
   c = tolower(c);
 
   if(c >= 'a' && c <= "z") {
-    
-    return "22233344455566677778889999"
+    // retezec cisel odpovidajic pismenum
+    // znak odecte hodnotu 'a'(97) a dostaneme pozici znaku v retezec
+    return "22233344455566677778889999"[c - 'a'];
   }
+
+  if(c == '+') {
+    return '0';
+  }
+
+  return c;
 }
 
 
