@@ -7,7 +7,7 @@
 char t9_char(char c) {
   c = tolower(c);
 
-  if(c >= 'a' && c <= "z") {
+  if(c >= 'a' && c <= 'z') {
     // retezec cisel odpovidajic pismenum
     // znak odecte hodnotu 'a'(97)
     // dostaneme pozici znaku v retezec
@@ -22,7 +22,7 @@ char t9_char(char c) {
 }
 
 int shoda(char text[], char hledam[]) {
-  for(int = 0; text[i] != '\0'; i++) {
+  for(int i = 0; text[i] != '\0'; i++) {
     int j = 0;
 
     // od aktualni pozice [i] zkousim jestli se shoduji
@@ -30,7 +30,7 @@ int shoda(char text[], char hledam[]) {
     while(text[i + j] == hledam[j] && hledam[j] != '\0') {
       j++;
     }
-
+    
     if(hledam[j] == '\0') {
       return 1;
     }
@@ -40,7 +40,7 @@ int shoda(char text[], char hledam[]) {
 
 
 int main(int argc, char *argv[]) {
-	if(argc < 2){
+	if(argc == 1){
 		char jmeno[MAX_LEN];
 		char cislo[MAX_LEN];
 		// zjisteni existence jmena a cisla
@@ -65,15 +65,21 @@ int main(int argc, char *argv[]) {
 				jmeno[strcspn(jmeno, "\n")] = '\0';
 				cislo[strcspn(cislo, "\n")] = '\0';
 
-        char t9_char[MAX_LEN];
+        char t9_jmeno[MAX_LEN];
         int i;
         for(i = 0; jmeno[i] != '\0'; i++) {
           t9_jmeno[i] = t9_char(jmeno[i]);
         }
         t9_jmeno[i] = '\0';
 
-
+        if(shoda(t9_jmeno, argv[1]) || shoda(cislo, argv[1])) {
+          printf("%s, %s\n", jmeno, cislo);
+          nalezeno = 1;
+        }
       }  
+    }
+    if (nalezeno == 0) {
+      printf("Not found\n");
     }
   }
 	return 0;
