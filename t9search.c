@@ -28,9 +28,9 @@ int shoda(char text[], char hledam[]) {
     // od aktualni pozice [i] zkousim jestli se shoduji
     // dalsi znaky [j]
     while(text[i + j] == hledam[j] && hledam[j] != '\0') {
-      j++;
+      j++; 
     }
-    
+
     if(hledam[j] == '\0') {
       return 1;
     }
@@ -65,6 +65,8 @@ int main(int argc, char *argv[]) {
 				jmeno[strcspn(jmeno, "\n")] = '\0';
 				cislo[strcspn(cislo, "\n")] = '\0';
 
+
+        // jmeno ze seznamu na t9 format
         char t9_jmeno[MAX_LEN];
         int i;
         for(i = 0; jmeno[i] != '\0'; i++) {
