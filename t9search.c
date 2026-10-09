@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_LEN 102
+#define MAX_LEN 111
 
 char t9_char(char c) {
   c = tolower(c);
@@ -49,6 +49,11 @@ int main(int argc, char *argv[]) {
 				jmeno[strcspn(jmeno, "\n")] = '\0';
 				cislo[strcspn(cislo, "\n")] = '\0';
 
+        
+        if(strlen(jmeno) > 100 || strlen(cislo) > 100) {
+			    fprintf(stderr, "Radek prekrocil 100 znaku.\n");
+          return 1;
+        }
 				printf("%s, %s\n", jmeno, cislo);
 			}
 		}
@@ -60,12 +65,16 @@ int main(int argc, char *argv[]) {
     char cislo[MAX_LEN];
     int nalezeno = 0;
 
-		while(fgets(jmeno, sizeof(jmeno), stdin) != NULL) {
+	  while(fgets(jmeno, sizeof(jmeno), stdin) != NULL) {
 			if(fgets(cislo, sizeof(cislo), stdin) != NULL) {
-				jmeno[strcspn(jmeno, "\n")] = '\0';
-				cislo[strcspn(cislo, "\n")] = '\0';
-
-
+			  jmeno[strcspn(jmeno, "\n")] = '\0';
+			  cislo[strcspn(cislo, "\n")] = '\0';
+			    		    
+        if(strlen(jmeno) > 100 || strlen(cislo) > 100) {
+			    fprintf(stderr, "Radek prekrocil 100 znaku.\n");
+          return 1;
+			    }
+       
         // jmeno ze seznamu na t9 format
         char t9_jmeno[MAX_LEN];
         int i;
@@ -84,8 +93,8 @@ int main(int argc, char *argv[]) {
           printf("%s, %s\n", jmeno, cislo);
           nalezeno = 1;
         }
-      }  
-    }
+    }  
+  }
     if (nalezeno == 0) {
       printf("Not found\n");
     }
