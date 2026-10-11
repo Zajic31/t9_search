@@ -70,6 +70,11 @@ int main(int argc, char *argv[]) {
 		char jmeno[MAX_LEN];
     char cislo[MAX_LEN];
     int nalezeno = 0;
+    
+    if (argv[1][0] == '\0') {
+      fprintf(stderr, "Argument nesmi byt prazdny\n");
+      return 1;
+    }
 
     for(int j = 0; argv[1][j] != '\0'; j++) {
       if (!isdigit(argv[1][j])) {
@@ -117,7 +122,13 @@ int main(int argc, char *argv[]) {
     if (nalezeno == 0) {
       printf("Not found\n");
     }
-    
   }
+
+
+  else {
+      fprintf(stderr, "Prilis mnoho argumentu\n");
+      return 1;
+    }
+
 	return 0;
 }
