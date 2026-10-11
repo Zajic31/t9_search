@@ -71,6 +71,13 @@ int main(int argc, char *argv[]) {
     char cislo[MAX_LEN];
     int nalezeno = 0;
 
+    for(int j = 0; argv[1][j] != '\0'; j++) {
+      if (!isdigit(argv[1][j])) {
+        fprintf(stderr, "Argument obshauje neciselne znaky\n");
+        return 1;
+      }
+    }
+
 	  while(fgets(jmeno, sizeof(jmeno), stdin) != NULL) {
 			if(fgets(cislo, sizeof(cislo), stdin) == NULL) {
         fprintf(stderr, "V souboru je neuplny kontakt.\n");
