@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #define MAX_LEN 111
+#define MAX_ASCII 126
+#define MIN_ASCII 32
+
 
 char t9_char(char c) {
   c = tolower(c);
@@ -11,7 +13,6 @@ char t9_char(char c) {
   if(c >= 'a' && c <= 'z') {
     return "22233344455566677778889999"[c - 'a'];
   }
-
   if(c == '+') {
     return '0';
   }
@@ -55,7 +56,7 @@ int main(int argc, char *argv[]) {
 			cislo[strcspn(cislo, "\n")] = '\0';
 
       for(int i = 0;jmeno[i] != '\0'; i++){
-        if (jmeno[i] < 32 || jmeno[i] > 126) {
+        if (jmeno[i] < MIN_ASCII || jmeno[i] > MAX_ASCII) {
           fprintf(stderr, "Kontakt neni validni - obsahuje netisknutelny znak nebo znak neni v ASCII.\n");
           return 1;
         }
@@ -93,13 +94,12 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "V souboru je neuplny kontakt.\n");
         return 1;
       } 
-    
       
 			  jmeno[strcspn(jmeno, "\n")] = '\0';
 		    cislo[strcspn(cislo, "\n")] = '\0';
      	
         for(int i = 0;jmeno[i] != '\0'; i++){
-          if (jmeno[i] < 32 || jmeno[i] > 126) {
+          if (jmeno[i] < MIN_ASCII || jmeno[i] > MAX_ASCII) {
             fprintf(stderr, "Kontakt neni validni - obsahuje netisknutelny znak nebo znak neni v ASCII.\n");
             return 1;
           }
@@ -136,7 +136,7 @@ int main(int argc, char *argv[]) {
 
 
   else {
-      fprintf(stderr, "Prilis mnoho argumentu\n");
+      fprintf(stderr, "Prilis mnoho argumentu.\n");
       return 1;
     }
 
