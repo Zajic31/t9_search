@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
 
       for(int i = 0;jmeno[i] != '\0'; i++){
         if (jmeno[i] < 32 || jmeno[i] > 126) {
-          fprintf(stderr, "V souboru je kontakt s nevalidnim znakem ASCII.\n");
+          fprintf(stderr, "Kontakt neni validni - obsahuje netisknutelny znak nebo znak neni v ASCII.\n");
           return 1;
         }
       }
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
      	
         for(int i = 0;jmeno[i] != '\0'; i++){
           if (jmeno[i] < 32 || jmeno[i] > 126) {
-            fprintf(stderr, "V souboru je kontakt s nevalidnim znakem ASCII.\n");
+            fprintf(stderr, "Kontakt neni validni - obsahuje netisknutelny znak nebo znak neni v ASCII.\n");
             return 1;
           }
         }
