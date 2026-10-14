@@ -8,9 +8,6 @@ char t9_char(char c) {
   c = tolower(c);
 
   if(c >= 'a' && c <= 'z') {
-    // retezec cisel odpovidajic pismenum
-    // znak odecte hodnotu 'a'(97)
-    // dostaneme pozici znaku v retezec
     return "22233344455566677778889999"[c - 'a'];
   }
 
@@ -25,8 +22,7 @@ int shoda(char text[], char hledam[]) {
   for(int i = 0; text[i] != '\0'; i++) {
     int j = 0;
 
-    // od aktualni pozice [i] zkousim jestli se shoduji
-    // dalsi znaky [j]
+    // current position [i] checking match with next chars [j]
     while(text[i + j] == hledam[j] && hledam[j] != '\0') {
       j++; 
     }
@@ -42,11 +38,11 @@ int shoda(char text[], char hledam[]) {
 
 int main(int argc, char *argv[]) {
 
-  //cely seznam kdyz spusteno bez argumentu
+  //whole list when no argumentu
   if(argc == 1){
 		char jmeno[MAX_LEN];
 		char cislo[MAX_LEN];
-		// zjisteni existence jmena a cisla
+		// checking if name and number exists
 		while(fgets(jmeno, sizeof(jmeno), stdin) != NULL) {
 			if(fgets(cislo, sizeof(cislo), stdin) == NULL) {
         fprintf(stderr, "V souboru je neuplny kontakt.\n");
@@ -65,7 +61,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-  //konkretni kontakty z argumentu
+  //exact contacts from the list
   else if(argc == 2) {
 		char jmeno[MAX_LEN];
     char cislo[MAX_LEN];
@@ -98,8 +94,6 @@ int main(int argc, char *argv[]) {
           return 1;
 			  }
 
-       
-        // jmeno ze seznamu na t9 format
         char t9_jmeno[MAX_LEN];
         int i;
         for(i = 0; jmeno[i] != '\0'; i++) {
