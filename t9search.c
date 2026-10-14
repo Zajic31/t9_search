@@ -95,38 +95,38 @@ int main(int argc, char *argv[]) {
         return 1;
       } 
       
-			  jmeno[strcspn(jmeno, "\n")] = '\0';
-		    cislo[strcspn(cislo, "\n")] = '\0';
+      jmeno[strcspn(jmeno, "\n")] = '\0';
+		  cislo[strcspn(cislo, "\n")] = '\0';
      	
-        for(int i = 0;jmeno[i] != '\0'; i++){
-          if (jmeno[i] < MIN_ASCII || jmeno[i] > MAX_ASCII) {
-            fprintf(stderr, "Kontakt neni validni - obsahuje netisknutelny znak nebo znak neni v ASCII.\n");
-            return 1;
-          }
-        }
-      		    		    
-        if(strlen(jmeno) > 100 || strlen(cislo) > 100) {
-			    fprintf(stderr, "Radek prekrocil 100 znaku.\n");
+      for(int i = 0;jmeno[i] != '\0'; i++){
+        if (jmeno[i] < MIN_ASCII || jmeno[i] > MAX_ASCII) {
+          fprintf(stderr, "Kontakt neni validni - obsahuje netisknutelny znak nebo znak neni v ASCII.\n");
           return 1;
-			  }
-
-        char t9_jmeno[MAX_LEN];
-        int i;
-        for(i = 0; jmeno[i] != '\0'; i++) {
-          t9_jmeno[i] = t9_char(jmeno[i]);
         }
-        t9_jmeno[i] = '\0';
+      }
+      		    		    
+      if(strlen(jmeno) > 100 || strlen(cislo) > 100) {
+  	    fprintf(stderr, "Radek prekrocil 100 znaku.\n");
+        return 1;
+		  }
 
-        char t9_cislo[MAX_LEN];
-        for (i = 0; cislo[i] != '\0'; i++) {
-          t9_cislo[i] = t9_char(cislo[i]);
-        }
-        t9_cislo[i] = '\0';
+      char t9_jmeno[MAX_LEN];
+      int i;
+      for(i = 0; jmeno[i] != '\0'; i++) {
+        t9_jmeno[i] = t9_char(jmeno[i]);
+      }
+      t9_jmeno[i] = '\0';
 
-        if(shoda(t9_jmeno, argv[1]) || shoda(t9_cislo, argv[1])) {
-          printf("%s, %s\n", jmeno, cislo);
-          nalezeno = 1;
-        }
+      char t9_cislo[MAX_LEN];
+      for (i = 0; cislo[i] != '\0'; i++) {
+        t9_cislo[i] = t9_char(cislo[i]);
+      }
+      t9_cislo[i] = '\0';
+
+      if(shoda(t9_jmeno, argv[1]) || shoda(t9_cislo, argv[1])) {
+        printf("%s, %s\n", jmeno, cislo);
+        nalezeno = 1;
+      }
     }
   
     if (nalezeno == 0) {
@@ -136,9 +136,9 @@ int main(int argc, char *argv[]) {
 
 
   else {
-      fprintf(stderr, "Prilis mnoho argumentu.\n");
-      return 1;
-    }
+    fprintf(stderr, "Prilis mnoho argumentu.\n");
+    return 1;
+  }
 
 	return 0;
 }
