@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 #define MAX_LEN 111
 
@@ -44,6 +45,14 @@ int main(int argc, char *argv[]) {
 		char cislo[MAX_LEN];
 		// checking if name and number exists
 		while(fgets(jmeno, sizeof(jmeno), stdin) != NULL) {
+
+      for(int i = 0;jmeno[i] != '\0'; i++){
+        if (jmeno[i] < 32 || jmeno[i] > 126) {
+          fprintf(stderr, "V souboru je kontakt s nevalidnim znakem ASCII.\n");
+          return 1;
+        }
+      }
+
 			if(fgets(cislo, sizeof(cislo), stdin) == NULL) {
         fprintf(stderr, "V souboru je neuplny kontakt.\n");
         return 1;
